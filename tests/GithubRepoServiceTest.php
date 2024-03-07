@@ -2,19 +2,19 @@
 
 namespace App\Tests;
 
+use App\Entity\GithubRepo;
+use App\Service\GithubRepoService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Doctrine\ORM\Tools\SchemaTool;
 
 class GithubRepoServiceTest extends KernelTestCase
 {
     private $entityManager;
-    private $githubRepoRepository;
+    private $githubRepoService;
 
     public function setUp(): void
     {
         self::bootKernel();
-
-
         $this->entityManager = self::$kernel->getContainer()
             ->get('doctrine')
             ->getManager();
@@ -25,14 +25,13 @@ class GithubRepoServiceTest extends KernelTestCase
         if (!empty($metadata)) {
             $schemaTool->createSchema($metadata);
         }
-
-        $this->githubRepoRepository = $this->entityManager->getRepository(GithubRepoRepository::class);
+        $container = static::getContainer();
+        $this->githubRepoService = $container->get(GithubRepoService::class);
     }
 
     public function testGetTopRepos()
     {
-        $githubRepoService = new GithubRepoService($this->githubRepoRepository);
-        $result = $githubRepoService->getTopRepos();
+        $result = $this->githubRepoService->getTopRepos();
         $this->assertEquals([], $result);
     }
 }
