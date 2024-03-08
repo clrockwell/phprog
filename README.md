@@ -41,7 +41,7 @@ Running the application
 ---
 If you're already familiar with Symfony, the steps to run this on your local will be the same.  The basics are:
 1. Clone the repo, `cd` into the directory
-2. Have a database ready to go - you'll need the credentails in the next step.  If you're using Lando, your connection string is `mysql://symfony:symfony@database:3306/symfony?serverVersion=5.7@charset=utf8mb4`
+2. Have a database ready to go - you'll need the credentials in the next step.  If you're using Lando, your connection string is `mysql://symfony:symfony@database:3306/symfony?serverVersion=5.7@charset=utf8mb4`
 3. Create a `.env.local` file with an `APP_KEY` and `DATABASE_URL`
 4. Run `composer install`
 5. Run `php bin/console doctrine:migrations:migrate`
