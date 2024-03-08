@@ -11,7 +11,7 @@ Architecture
 ---
 PHP: 8.2
 
-MySQL: 5.7.29
+MySQL: 5.7.29 (Sqlite for the tests)
 
 Symfony: 7
 
@@ -34,6 +34,8 @@ likely be handed off to a background process that could handle the create and up
 
 Another way to state this: From a software engineering standpoint I know what I want to do; however, time is of the essence so I noted where I think my knowledge of the 
 framework needs to improve in order to implement the correct pattern/solution.  As always, I'm happy to review and discuss any of these.
+
+I didn't get complete test coverage but I wanted to demonstrate using PHPUnit with a sqlite database.
 
 Running the application
 ---
