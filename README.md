@@ -53,8 +53,6 @@ ___
 I use [Lando](https://docs.lando.dev/) for local development, so you'll find a couple relevant files/directories in this repo:
 
 1. `.lando.yml`
-2. `.lando.php.ini`
-3. `.lando`
 
 If you're familiar with Lando just run `lando start` and then your normal composer commands, prefaced with `lando `.  For example, `lando composer install`.  This will give you an appserver running Apache, so the `.htaccess` file is important.
 
