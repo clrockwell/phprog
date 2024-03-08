@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GithubRepoRepository::class)]
+#[ORM\Index(columns: ['repository_id'], name: 'repository_id_idx')]
 class GithubRepo
 {
     #[ORM\Id]
@@ -21,13 +22,13 @@ class GithubRepo
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $url = null;
+    private ?string $html_url = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $created_date = null;
+    private ?\DateTimeInterface $created_at = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $last_push_date = null;
+    private ?\DateTimeInterface $pushed_at = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
@@ -71,38 +72,38 @@ class GithubRepo
         return $this;
     }
 
-    public function getUrl(): ?string
+    public function getHtmlUrl(): ?string
     {
-        return $this->url;
+        return $this->html_url;
     }
 
-    public function setUrl(string $url): static
+    public function setHtmlUrl(string $html_url): static
     {
-        $this->url = $url;
+        $this->html_url = $html_url;
 
         return $this;
     }
 
-    public function getCreatedDate(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_date;
+        return $this->created_at;
     }
 
-    public function setCreatedDate(\DateTimeInterface $created_date): static
+    public function setCreatedAt(\DateTimeInterface $created_at): static
     {
-        $this->created_date = $created_date;
+        $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getLastPushDate(): ?\DateTimeInterface
+    public function getPushedAt(): ?\DateTimeInterface
     {
-        return $this->last_push_date;
+        return $this->pushed_at;
     }
 
-    public function setLastPushDate(\DateTimeInterface $last_push_date): static
+    public function setPushedAt(\DateTimeInterface $pushed_at): static
     {
-        $this->last_push_date = $last_push_date;
+        $this->pushed_at = $pushed_at;
 
         return $this;
     }

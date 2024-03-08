@@ -1,7 +1,7 @@
 name: phprog
 recipe: symfony
 config:
-  webroot: public
+  webroot: ./public
 services:
   appserver:
     type: php:8.2

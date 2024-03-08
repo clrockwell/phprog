@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-end mt-4">
+        <p>Last updated: {{ last_updated.updated_at | date("F jS \\a\\t g:ia T") }}.  <a href="{{ path('github_refresh') }}" class="">Sync now</a></p>
+    </div>
+</div>
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+<div class="row">
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Repository Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Last Push Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Number of Stars</th>
+                    <th scope="col">Detail</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for repo in repos %}
+                    <tr>
+                        <td>{{ repo.repositoryId }}</td>
+                        <td>{{ repo.name }}</td>
+                        <td><a href="{{ repo.htmlUrl }}" target="_blank">{{ repo.htmlUrl }}</a></td>
+                        <td>{{ repo.createdAt | date("F jS \\a\\t g:ia") }}</td>
+                        <td>{{ repo.pushedAt | date("F jS \\a\\t g:ia") }}</td>
+                        <td>{{ repo.description | length > 50 ? repo.description | slice(0, 50) ~ '...' : repo.description }}</td>
+                        <td>{{ repo.stargazersCount }}</td>
+                        <td><a href="{{ path('repository_detail', { 'id' : repo.id }) }}">View</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

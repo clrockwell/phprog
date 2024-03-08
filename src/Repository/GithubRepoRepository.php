@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\GithubRepo;
+use App\Service\GithubRepoRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,35 +15,15 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method GithubRepo[]    findAll()
  * @method GithubRepo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class GithubRepoRepository extends ServiceEntityRepository
+class GithubRepoRepository extends ServiceEntityRepository implements GithubRepoRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, GithubRepo::class);
     }
 
-    //    /**
-    //     * @return GithubRepo[] Returns an array of GithubRepo objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('g')
-    //            ->andWhere('g.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('g.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?GithubRepo
-    //    {
-    //        return $this->createQueryBuilder('g')
-    //            ->andWhere('g.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function getTopRepos(): array {
+        // TODO limit should be configurable
+        return $this->findBy([], ['stargazers_count' => 'DESC'], 10);
+    }
 }

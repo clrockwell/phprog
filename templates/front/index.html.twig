@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PHP Repos on Github{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    {% include 'banner.html.twig' %}
+
+    {% if (repos is empty) %}
+        {% include 'front/no-content.html.twig' %}
+    {% else %}
+        {% include 'front/repos-table.html.twig' %}
+    {% endif %}
+
+</div>
+{% endblock %}
