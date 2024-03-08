@@ -23,6 +23,8 @@ I thought it best to show I could develop a small application using a framework 
 Notes/Todo
 ---
 
+Added after sending link: If I notice issues with the code I'm going to create Issues for them, as I've already sent this for review and do not want to edit the actual code.
+
 Throughout the code base I have included notes, most often they start with:
 
 > Chris Rockwell - TODO
