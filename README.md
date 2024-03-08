@@ -18,7 +18,7 @@ Symfony: 7
 The focus was on running the recent versions of Symfony and PHP.
 
 Symfony is a bit much for an application of this scope; however, the application is an assessment for a team that primarily uses Symfony.  As a developer that does not get a chance to use Symfony often
-I thought it best to show that I could develop a small application using a framework I rarely get to use.
+I thought it best to show I could develop a small application using a framework I rarely get to use.
 
 Notes/Todo
 ---
